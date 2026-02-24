@@ -1,0 +1,40 @@
+﻿services:
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - ./.env
+    volumes:
+      # 反代配置（只读）
+      - ./deploy/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # Caddy 数据（证书、配置）
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - site
+      - api
+    restart: unless-stopped
+
+  site:
+    image: "peaceiris/hugo:v${HUGO_VERSION}"
+    working_dir: /src
+    command: ["server", "--bind=0.0.0.0", "--port=1313", "--baseURL=http://localhost/", "--disableFastRender", "--source=/src"]
+    volumes:
+      - ./site:/src
+    expose:
+      - "1313"
+    restart: unless-stopped
+
+  api:
+    build: ./api
+    env_file:
+      - ./.env
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
