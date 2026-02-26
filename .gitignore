@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# env
 .env
 deploy/.env
@@ -9,3 +10,20 @@ Thumbs.db
 # python
 __pycache__/
 *.pyc
+=======
+﻿# 环境变量（不要提交真实密钥）
+.env
+
+# Python 缓存
+__pycache__/
+*.pyc
+.venv/
+
+# Hugo 构建产物（如后续你使用 hugo build）
+site/public/
+site/resources/
+
+# OS 杂项
+.DS_Store
+Thumbs.db
+>>>>>>> e1d1c30cb70e5af2936902b64dc0dc092868325b
