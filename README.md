@@ -18,5 +18,5 @@
    - API 健康检查：`http://localhost/api/health`
 
 ## 上线提示（后续再做）
-- 生产环境建议把 `site` 改为 `hugo build` 输出静态文件，再由 Caddy `file_server` 提供服务。
+- 生产环境建议把 `site` 改为 `111111111 build` 输出静态文件，再由 Caddy `file_server` 提供服务。
 - `SITE_ADDRESS` 改为你的域名，开放安全组 80/443，填写 `ACME_EMAIL` 以自动签发证书。
